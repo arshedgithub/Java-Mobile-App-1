@@ -20,11 +20,30 @@
 
     <Button
         android:id="@+id/btn_first"
-        android:layout_margin="50sp"
-        android:backgroundTint="@color/blue_800"
+        android:layout_marginTop="50sp"
+        android:layout_marginHorizontal="50sp"
+        android:backgroundTint="@color/blue_a_700"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_click_me"
+        android:text="@string/btn_txt_page1"
+        app:icon="@android:drawable/btn_star_big_on" />
+
+    <Button
+        android:id="@+id/btn_second"
+        android:layout_marginHorizontal="50sp"
+        android:backgroundTint="@color/red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_txt_page2"
+        app:icon="@android:drawable/btn_star_big_on" />
+
+    <Button
+        android:id="@+id/btn_third"
+        android:layout_marginHorizontal="50sp"
+        android:backgroundTint="@color/blue_900"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_txt_page3"
         app:icon="@android:drawable/btn_star_big_on" />
 
 </LinearLayout>

@@ -13,6 +13,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btn_first;
+    Button btn_second;
+    Button btn_third;
+    TextView txt_view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +29,42 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button btn_first = findViewById(R.id.btn_first);
-        TextView txt_view = findViewById(R.id.txt_welcome);
+        btn_first = findViewById(R.id.btn_first);
+        btn_second = findViewById(R.id.btn_second);
+        btn_third = findViewById(R.id.btn_third);
+        txt_view = findViewById(R.id.txt_welcome);
 
         btn_first.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txt_view.setText("Button Clicked !");
+                pageSelection(btn_first);
             }
         });
+
+        btn_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageSelection(btn_second);
+            }
+        });
+
+        btn_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageSelection(btn_third);
+            }
+        });
+    }
+
+    private void pageSelection(Button btn){
+        if (btn.getId() == btn_first.getId()){
+            txt_view.setText(getString(R.string.btn_txt_page1));
+        } else if (btn.getId() == btn_second.getId()){
+            txt_view.setText(getString(R.string.btn_txt_page2));
+        } else if (btn.getId() == btn_third.getId()){
+            txt_view.setText(getString(R.string.btn_txt_page3));
+        } else {
+            txt_view.setText("Unknown Page");
+        }
     }
 }

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MAD1</string>
     <string name="txt_welcome_msg">Welcome to My First App!</string>
-    <string name="txt_click_me">Click Me !</string>
+    <string name="btn_txt_page1">Page 01</string>
+    <string name="btn_txt_page2">Page 02</string>
+    <string name="btn_txt_page3">Page 03</string>
 </resources>
