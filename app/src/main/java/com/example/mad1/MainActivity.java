@@ -1,5 +1,6 @@
 package com.example.mad1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,11 +59,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void pageSelection(Button btn){
         if (btn.getId() == btn_first.getId()){
-            txt_view.setText(getString(R.string.btn_txt_page1));
+            txt_view.setText(getString(R.string.btn_txt_page1) + " selected");
+            Intent page01 = new Intent(MainActivity.this, Page01.class);
+            startActivity(page01);
+
         } else if (btn.getId() == btn_second.getId()){
-            txt_view.setText(getString(R.string.btn_txt_page2));
+            txt_view.setText(getString(R.string.btn_txt_page2) + " selected");
+            Intent page02= new Intent(MainActivity.this, Page02.class);
+            startActivity(page02);
+
         } else if (btn.getId() == btn_third.getId()){
-            txt_view.setText(getString(R.string.btn_txt_page3));
+            txt_view.setText(getString(R.string.btn_txt_page3) + " selected");
+            Intent page03 = new Intent(MainActivity.this, Page03.class);
+            startActivity(page03);
+
         } else {
             txt_view.setText("Unknown Page");
         }
