@@ -280,7 +280,7 @@
                 android:textSize="35sp"
                 android:layout_margin="5sp"
                 android:text="C"
-                android:onClick="actionHandler"
+                android:onClick="clear"
                 android:tag="clear"
                  />
 

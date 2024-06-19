@@ -65,20 +65,31 @@ public class Page02 extends AppCompatActivity {
     }
 
     public void calculate(View view){
+        if (num1 == null || num2 == null || operation == null) {
+            output_txt.setText("Invalid Inputs");
+            return;
+        }
         switch (operation){
             case "add":
-                output_txt.setText("+");
+                output_txt.setText(String.valueOf(num1 + num2));
                 break;
             case "sub":
-                output_txt.setText("-");
+                output_txt.setText(String.valueOf(num1 - num2));
                 break;
             case "mul":
-                output_txt.setText("*");
+                output_txt.setText(String.valueOf(num1 * num2));
                 break;
             case "div":
-                output_txt.setText("/");
+                output_txt.setText(String.valueOf(num1 / num2));
                 break;
         }
     }
+
+    public void clear(View view){
+        num1 = null;
+        num2 = null;
+        operation = null;
+    }
+
 
 }
