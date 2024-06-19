@@ -37,23 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
         btn_first.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                pageSelection(btn_first);
-            }
+            public void onClick(View view) { pageSelection(btn_first); }
         });
 
         btn_second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                pageSelection(btn_second);
-            }
+            public void onClick(View view) { pageSelection(btn_second); }
         });
 
         btn_third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                pageSelection(btn_third);
-            }
+            public void onClick(View view) { pageSelection(btn_third); }
         });
     }
 
