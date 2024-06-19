@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="70sp"
         android:layout_margin="20sp"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:text="0"
         app:layout_constraintTop_toBottomOf="@id/page_2_head"
         android:textAlignment="textEnd" />
@@ -85,6 +85,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="1"
+                android:onClick="numberHandler"
+                android:tag="1"
                  />
 
             <Button
@@ -97,7 +99,9 @@
                 android:textSize="35sp"
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
-                android:text="2" />
+                android:text="2"
+                android:onClick="numberHandler"
+                android:tag="2" />
 
             <Button
                 android:id="@+id/btn_3"
@@ -110,6 +114,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="3"
+                android:onClick="numberHandler"
+                android:tag="3"
                  />
 
             <Button
@@ -122,6 +128,8 @@
                 android:textSize="35sp"
                 android:layout_margin="5sp"
                 android:text="+"
+                android:onClick="actionHandler"
+                android:tag="add"
                  />
 
         </TableRow>
@@ -141,6 +149,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="4"
+                android:onClick="numberHandler"
+                android:tag="4"
                  />
 
             <Button
@@ -154,6 +164,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="5"
+                android:onClick="numberHandler"
+                android:tag="5"
                  />
 
             <Button
@@ -167,6 +179,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="6"
+                android:onClick="numberHandler"
+                android:tag="6"
                  />
 
             <Button
@@ -179,6 +193,8 @@
                 android:textSize="40sp"
                 android:layout_margin="5sp"
                 android:text="-"
+                android:onClick="actionHandler"
+                android:tag="sub"
                  />
 
         </TableRow>
@@ -199,6 +215,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="7"
+                android:onClick="numberHandler"
+                android:tag="7"
                  />
 
             <Button
@@ -212,6 +230,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="8"
+                android:onClick="numberHandler"
+                android:tag="8"
                  />
 
             <Button
@@ -225,6 +245,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="9"
+                android:onClick="numberHandler"
+                android:tag="9"
                  />
 
             <Button
@@ -237,6 +259,8 @@
                 android:textSize="40sp"
                 android:layout_margin="5sp"
                 android:text="x"
+                android:onClick="actionHandler"
+                android:tag="mul"
                  />
 
         </TableRow>
@@ -256,6 +280,8 @@
                 android:textSize="35sp"
                 android:layout_margin="5sp"
                 android:text="C"
+                android:onClick="actionHandler"
+                android:tag="clear"
                  />
 
             <Button
@@ -269,6 +295,8 @@
                 android:layout_margin="5sp"
                 android:textColor="@color/black"
                 android:text="0"
+                android:onClick="numberHandler"
+                android:tag="0"
                  />
 
             <Button
@@ -281,6 +309,7 @@
                 android:textSize="35sp"
                 android:layout_margin="5sp"
                 android:text="="
+                android:onClick="calculate"
                  />
 
             <Button
@@ -293,6 +322,8 @@
                 android:textSize="40sp"
                 android:layout_margin="5sp"
                 android:text="/"
+                android:onClick="actionHandler"
+                android:tag="div"
                  />
 
         </TableRow>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,11 @@ public class Page02 extends AppCompatActivity {
     Button btn_home;
     Button btn_second;
     Button btn_third;
+    TextView output_txt;
+
+    String operation = null;
+    Integer num1 = null;
+    Integer num2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,7 @@ public class Page02 extends AppCompatActivity {
         btn_home = findViewById(R.id.btn_pg_2_home);
         btn_second = findViewById(R.id.btn_pg_2_2);
         btn_third = findViewById(R.id.btn_pg_2_3);
+        output_txt = findViewById(R.id.output_txt);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -48,4 +55,30 @@ public class Page02 extends AppCompatActivity {
             public void onClick(View view) { startActivity(new Intent(Page02.this, Page03.class)); }
         });
     }
+
+    public void actionHandler(View view){ operation = (String) view.getTag(); }
+
+    public void numberHandler(View view){
+        String num_str = (String) view.getTag();
+        if (num1 == null) num1 = Integer.parseInt(num_str);
+        else num2 = Integer.parseInt(num_str);
+    }
+
+    public void calculate(View view){
+        switch (operation){
+            case "add":
+                output_txt.setText("+");
+                break;
+            case "sub":
+                output_txt.setText("-");
+                break;
+            case "mul":
+                output_txt.setText("*");
+                break;
+            case "div":
+                output_txt.setText("/");
+                break;
+        }
+    }
+
 }
