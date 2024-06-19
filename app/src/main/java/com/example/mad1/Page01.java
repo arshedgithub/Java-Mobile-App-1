@@ -1,6 +1,7 @@
 package com.example.mad1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,13 @@ public class Page01 extends AppCompatActivity {
         btn_second = findViewById(R.id.btn_pg_1_2);
         btn_third = findViewById(R.id.btn_pg_1_3);
         txtContentPg1 = findViewById(R.id.txt_content_pg_1);
-        String msg = getIntent().getStringExtra("message");
+
+
+//        String msg = getIntent().getStringExtra("message");
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userSettings", MODE_PRIVATE);
+        String msg = sharedPreferences.getString("message", "Shared Preference not found");
+
         txtContentPg1.setText(msg);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
