@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (btn.getId() == btn_first.getId()){
             txt_view.setText(getString(R.string.btn_txt_page1) + " selected");
             Intent page01 = new Intent(MainActivity.this, Page01.class);
+            page01.putExtra("message", "Hello from MainActivity !");
             startActivity(page01);
 
         } else if (btn.getId() == btn_second.getId()){
