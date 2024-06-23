@@ -1,7 +1,9 @@
 package com.example.mad1;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
         btn_second = findViewById(R.id.btn_second);
         btn_third = findViewById(R.id.btn_third);
         txt_view = findViewById(R.id.txt_welcome);
+
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        SQLiteDatabase database = dbhelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", "Arshed Ahmed");
+        values.put("value", "arshed@24");
+        database.insert("Page1Values", null, values);
+
 
         btn_first.setOnClickListener(new View.OnClickListener() {
             @Override

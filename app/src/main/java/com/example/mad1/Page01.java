@@ -2,6 +2,8 @@ package com.example.mad1;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,13 +33,23 @@ public class Page01 extends AppCompatActivity {
         btn_third = findViewById(R.id.btn_pg_1_3);
         txtContentPg1 = findViewById(R.id.txt_content_pg_1);
 
+        // String msg = getIntent().getStringExtra("message");
 
-//        String msg = getIntent().getStringExtra("message");
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        SQLiteDatabase database = dbhelper.getReadableDatabase();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("userSettings", MODE_PRIVATE);
-        String msg = sharedPreferences.getString("message", "Shared Preference not found");
+        Cursor cursor = database.rawQuery("SELECT * FROM Page1Values", null);
 
-        txtContentPg1.setText(msg);
+        if (cursor.moveToNext()){
+            String name = cursor.getString(1);
+            String value = cursor.getString(2);
+            txtContentPg1.setText("Name : " + name + "\nValue : " + value);
+        }
+        cursor.close();
+
+//        SharedPreferences sharedPreferences = getSharedPreferences("userSettings", MODE_PRIVATE);
+//        String msg = sharedPreferences.getString("message", "Shared Preference not found");
+//        txtContentPg1.setText(msg);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
