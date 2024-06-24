@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_second;
     Button btn_third;
     TextView txt_view;
+    Boolean autoBrightnessChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         values.put("name", "Arshed Ahmed");
         values.put("value", "arshed@24");
         database.insert("Page1Values", null, values);
-
 
         btn_first.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(page02);
 
         } else if (btn.getId() == btn_third.getId()){
-            showStartDialog();
-
+//            showStartDialog();
+            showBrightnessDialog();
         } else {
             txt_view.setText("Unknown Page");
         }
@@ -119,7 +123,46 @@ public class MainActivity extends AppCompatActivity {
     private void startGame(){
         txt_view.setText("Game selected");
         Intent page03 = new Intent(MainActivity.this, Page03.class);
-        Toast.makeText(this, "Game Loading...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Game Loading...", Toast.LENGTH_SHORT).show();
         startActivity(page03);
+    }
+
+    private void showBrightnessDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Brightness");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.alert_dialog, null);
+        builder.setView(dialogView);
+
+        CheckBox auto_bright_checkbox = dialogView.findViewById(R.id.checkbox_auto_bright);
+        SeekBar brihgtness_seekbar = dialogView.findViewById(R.id.seekbar_brightness);
+
+        auto_bright_checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                brihgtness_seekbar.setEnabled(!isChecked);
+                autoBrightnessChecked = isChecked;
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int brightnessValue = brihgtness_seekbar.getProgress();
+                Toast.makeText(MainActivity.this, "Brightness set to: " + (autoBrightnessChecked ? "Automatic" : brightnessValue), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
