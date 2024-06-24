@@ -2,8 +2,8 @@
     <string name="app_name">MAD1</string>
     <string name="txt_welcome_msg">Welcome to My First App!</string>
     <string name="btn_txt_page1">Page 01</string>
-    <string name="btn_txt_page2">Page 02</string>
-    <string name="btn_txt_page3">Page 03</string>
+    <string name="btn_txt_page2">Calculator</string>
+    <string name="btn_txt_page3">Game</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

@@ -1,6 +1,7 @@
 package com.example.mad1;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -83,12 +86,40 @@ public class MainActivity extends AppCompatActivity {
             startActivity(page02);
 
         } else if (btn.getId() == btn_third.getId()){
-            txt_view.setText(getString(R.string.btn_txt_page3) + " selected");
-            Intent page03 = new Intent(MainActivity.this, Page03.class);
-            startActivity(page03);
+            showStartDialog();
 
         } else {
             txt_view.setText("Unknown Page");
         }
+    }
+
+    private void showStartDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Game!");
+        builder.setMessage("Do you want to start the game?");
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.setPositiveButton("Start", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startGame();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void startGame(){
+        txt_view.setText("Game selected");
+        Intent page03 = new Intent(MainActivity.this, Page03.class);
+        Toast.makeText(this, "Game Loading...", Toast.LENGTH_SHORT).show();
+        startActivity(page03);
     }
 }
